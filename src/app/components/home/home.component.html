@@ -8,12 +8,12 @@
       </div>
       <div class="call-to-action">
         <button>Ver proyectos</button>
-        <a href="https://github.com/" target="_blank"><img ngSrc="assets/images/github-mark.png" height="50" width="50"></a>
-        <a href="https://www.linkedin.com/" target="_blank"><img ngSrc="assets/images/linkedin-logo.png" height="50" width="50"></a>
+        <a href="https://github.com/" target="_blank"><img ngSrc="assets/images/github-mark.png" [height]="snsLogoWidth" [width]="snsLogoWidth"></a>
+        <a href="https://www.linkedin.com/" target="_blank"><img ngSrc="assets/images/linkedin-logo.png" [height]="snsLogoWidth" [width]="snsLogoWidth"></a>
       </div>
     </div>
     <div class="pfp-container">
-      <img ngSrc="assets/images/cat.jpg" alt="Profile photo" height="150" width="150">
+      <img ngSrc="assets/images/cat.jpg" alt="Profile photo" [height]="pfpWidth" [width]="pfpWidth">
     </div>
   </main>
 </div>

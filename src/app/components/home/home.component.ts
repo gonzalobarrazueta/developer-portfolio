@@ -9,5 +9,6 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
+  snsLogoWidth: number = 40;
+  pfpWidth: number = 150;
 }
