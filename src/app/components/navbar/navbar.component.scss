@@ -1,0 +1,32 @@
+main {
+  margin: 0;
+}
+
+header {
+  background-color: #44AB2A;
+  padding: 15px 3%;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+li {
+  border-radius: 10px ;
+  border: 3px solid #FF2D57;
+
+  list-style-type: none;
+}
+
+.contact {
+  background-color: #FF2D57;
+  padding: 7px 25px;
+  display: block;
+
+  font-size: 13px;
+  color: #ffffff;
+}
