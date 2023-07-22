@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+.page {
+  padding: 20% 10%;
+  background-color: #FFFAE5;
+}
+
 main {
   display: flex;
   flex-flow: column nowrap;
@@ -28,9 +33,16 @@ main {
     font-size: 24px;
 
     span {
-      font-size: 20px;
+      display: block;
+      font-size: 16px;
     }
   }
+}
+
+.social-media {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 20px;
 }
 
 button {
