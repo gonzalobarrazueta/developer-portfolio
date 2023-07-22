@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: right;
+  gap: 15px;
+}
+
+.pfp-container {
+  width: 50%;
+  border: 2px solid #000;
+  border-radius: 15px;
+
+  overflow: hidden;
+  display: flex;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.information {
+  h1 {
+    font-size: 24px;
+
+    span {
+      font-size: 20px;
+    }
+  }
+}
+
+button {
+  background-color: #58CE3A;
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 5px;
+  max-width: 200px;
+
+  font-weight: 600;
+  color: #ffffff;
+}
