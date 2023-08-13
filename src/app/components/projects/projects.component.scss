@@ -1,0 +1,40 @@
+article {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 15px;
+
+  width: 80%;
+  padding: 10px;
+}
+
+.project-title {
+  h1 {
+    font-size: 20px;
+  }
+}
+
+.project-image {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+  }
+}
+
+.project-technologies {
+  list-style-type: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 10px;
+
+  li {
+
+  }
+}
+
+.project-button {
+  margin: 0 auto;
+}
