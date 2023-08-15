@@ -1,10 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
 article {
   display: flex;
   flex-flow: column nowrap;
   gap: 15px;
 
   width: 80%;
-  padding: 10px;
+  padding: 30px 25px;
+
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(77, 188, 230, 0.42) 0%, rgba(19, 73, 210, 0.56) 100%);
+
+  cursor: pointer;
 }
 
 .project-title {
@@ -31,10 +40,28 @@ article {
   gap: 10px;
 
   li {
+    background-color: #2F4B93;
+    border-radius: 10px;
+    padding: 5px 15px;
 
+    font-size: 15px;
+    color: #FFFFFF;
   }
 }
 
 .project-button {
   margin: 0 auto;
+
+  button {
+    border: 0;
+    border-radius: 5px;
+
+    background-color: #373737;
+    padding: 10px 25px;
+
+    font-size: 16px;
+    color: #FFFFFF;
+
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
 }
