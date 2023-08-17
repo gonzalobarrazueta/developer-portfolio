@@ -2,6 +2,24 @@
   box-sizing: border-box;
 }
 
+.projects-page {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 15px;
+  padding: 20px 0;
+}
+
+.page-title {
+  padding-left: 10%;
+}
+
+.projects-list {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 30px;
+}
+
 article {
   display: flex;
   flex-flow: column nowrap;
