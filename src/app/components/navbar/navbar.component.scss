@@ -17,6 +17,7 @@ nav {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
 
   max-width: 992px;
   margin: 0 auto;
@@ -26,6 +27,16 @@ a {
   text-decoration: none;
   color: #FFFFFF;
 };
+
+.nav-toggle {
+  color: #FFFFFF;
+  background: none;
+  border: none;
+  padding: 0 10px;
+  font-size: 20px;
+
+  display: none;
+}
 
 .nav-menu {
   margin: 0;
