@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -14,4 +13,11 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 export class NavbarComponent {
 
   protected readonly faBars = faBars;
+
+  toggleNavMenu() {
+    const navMenu = document.querySelector(".nav-menu");
+    if (navMenu != null ) {
+      navMenu.classList.toggle("nav-menu-visible");
+    }
+  }
 }

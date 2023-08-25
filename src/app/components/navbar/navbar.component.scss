@@ -5,7 +5,7 @@
 
 header {
   background-color: #44AB2A;
-  padding: 15px 3%;
+  padding: 15px 3% 15px 10%;
   width: 100%;
 
   position: fixed;
@@ -19,14 +19,21 @@ nav {
   justify-content: space-between;
   align-items: center;
 
-  max-width: 992px;
   margin: 0 auto;
 }
 
 a {
   text-decoration: none;
   color: #FFFFFF;
-};
+}
+
+.logo, .nav-menu {
+  font-size: 15px;
+}
+
+.logo {
+  white-space: nowrap;
+}
 
 .nav-toggle {
   color: #FFFFFF;
@@ -34,23 +41,66 @@ a {
   border: none;
   padding: 0 10px;
   font-size: 20px;
-
-  display: none;
 }
 
 .nav-menu {
   margin: 0;
-  padding: 0;
+  padding: 20px 0;
 
   display: flex;
-  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 
-  .nav-menu-item {
-    width: max-content;
-    list-style-type: none;
+  position: fixed;
+  top: 50px;
+  left: 100%;
+  transition: left 0.5s;
+
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow-y: auto;
+
+  background: linear-gradient(180deg, rgba(97,176,78,1) 0%, rgba(255,255,255,0.6) 100%);
+  backdrop-filter: blur(5px);
+}
+
+.nav-menu-visible {
+  left: 0;
+}
+
+.nav-menu-item {
+  width: max-content;
+  list-style-type: none;
+  line-height: 50px;
+}
+
+.nav-menu-link:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 900px) {
+  header {
+    padding: 15px 5%;
   }
 
-  .nav-menu-link:hover {
-    text-decoration: underline;
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-menu {
+    flex-direction: row;
+    justify-content: right;
+
+    position: static;
+    top: 0;
+    left: 0;
+
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .nav-menu-item {
+    line-height: 0;
   }
 }
