@@ -20,18 +20,23 @@
   gap: 30px;
 }
 
-article {
+.project-card {
   display: flex;
   flex-flow: column nowrap;
   gap: 15px;
 
   width: 90%;
+  max-width: 900px;
   padding: 30px 20px;
 
   border-radius: 10px;
   background: linear-gradient(180deg, rgba(77, 188, 230, 0.42) 0%, rgba(19, 73, 210, 0.56) 100%);
 
   cursor: pointer;
+}
+
+.project-card:hover {
+  outline: 1.5px solid #404040;
 }
 
 .project-title {
