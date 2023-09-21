@@ -11,10 +11,7 @@ interface ImportMetaEnv {
   // Add your environment variables below
   // readonly NG_APP_API_URL: string;
   [key: string]: any;
-  readonly NG_APP_NOTION_API_URL: string;
-  readonly NG_APP_NOTION_API_VERSION: string,
-  readonly NG_APP_NOTION_DATABASE_ID: string;
-  readonly NG_APP_NOTION_AUTH_TOKEN: string;
+  readonly NG_APP_PROJECTS_URL: string;
 }
 
 /*
