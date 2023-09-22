@@ -88,3 +88,29 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 }
+
+@media (min-width: 600px) {
+  .page-title {
+    padding-left: 5%;
+  }
+
+  .project-card {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-auto-rows: min-content;
+  }
+  .project-description {
+    grid-row: 2 / 3;
+    align-self: center;
+  }
+
+  .project-image {
+    grid-column: 2;
+    grid-row: 2 / 4 ;
+  }
+
+  .project-technologies {
+    grid-column: 1;
+    align-self: center;
+  }
+}
