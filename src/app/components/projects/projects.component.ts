@@ -12,6 +12,8 @@ import { Project } from "../../models/project";
 })
 export class ProjectsComponent {
 
+  public projects: Array<Project> = [];
+
   constructor(private notionService: NotionService) {
     this.getProjects();
   }
@@ -19,14 +21,21 @@ export class ProjectsComponent {
   getProjects() {
     this.notionService.getPages()
       .subscribe(data => {
-        let projects: Array<any> = data.results;
-        for (let i = 0; i < projects.length; i++) {
-          console.log(this.pageToProject(projects[i]));
-        }
+        this.projects = this.buildProjectsArray(data.results);
       });
   }
 
-  pageToProject(page: any) {
+  buildProjectsArray(results: Array<any>): Array<Project> {
+
+    let projectsArray: Array<Project> = [];
+    for (let i = 0; i < results.length; i++) {
+      projectsArray.push(this.pageToProject(results[i]));
+    }
+
+    return projectsArray;
+  }
+
+  pageToProject(page: any): Project {
 
     let pageTitle = page.properties.name.title;
     let title: string = "";
