@@ -11,6 +11,10 @@
 
 .page-title {
   padding-left: 10%;
+
+  h1 {
+    font-size: 24px;
+  }
 }
 
 .projects-list {
@@ -27,7 +31,7 @@
 
   width: 90%;
   max-width: 900px;
-  padding: 30px 20px;
+  padding: 25px 20px;
 
   border-radius: 10px;
   background: linear-gradient(180deg, rgba(77, 188, 230, 0.42) 0%, rgba(19, 73, 210, 0.56) 100%);
@@ -40,8 +44,10 @@
 }
 
 .project-title {
+  text-align: center;
+
   h1 {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
@@ -59,7 +65,7 @@
   list-style-type: none;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 10px;
 
   li {
@@ -67,7 +73,7 @@
     border-radius: 10px;
     padding: 5px 15px;
 
-    font-size: 15px;
+    font-size: 13px;
     color: #FFFFFF;
   }
 }
@@ -80,9 +86,9 @@
     border-radius: 5px;
 
     background-color: #373737;
-    padding: 10px 25px;
+    padding: 10px 20px;
 
-    font-size: 16px;
+    font-size: 14px;
     color: #FFFFFF;
 
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -99,6 +105,7 @@
     grid-template-columns: repeat(2, auto);
     grid-auto-rows: min-content;
   }
+
   .project-description {
     grid-row: 2 / 3;
     align-self: center;
