@@ -3,21 +3,18 @@
     <h1>Proyectos</h1>
   </div>
   <div class="projects-list">
-    <article class="project-card">
+    <article *ngFor="let project of projects; let i = index" class="project-card" [style]="setBackgroundGradient(projectColors[i])">
       <div class="project-title">
-        <h1>Aplicación Web de Finanzas: Simulador de Crédito Hipotecario “Mivivienda”</h1>
+        <h1>{{project.title}}</h1>
       </div>
       <div class="project-description">
-        <p>Aplicación Web que calcula y muestra el plan de pagos de un crédito hipotecario.</p>
+        <p>{{project.description}}</p>
       </div>
       <div class="project-image">
         <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
       </div>
       <ul class="project-technologies">
-        <li>Angular</li>
-        <li>Node.js</li>
-        <li>Prisma</li>
-        <li>PostgreSQL</li>
+        <li *ngFor="let tech of project.technologies">{{tech}}</li>
       </ul>
       <div class="project-button">
         <button>Ver proyecto</button>
