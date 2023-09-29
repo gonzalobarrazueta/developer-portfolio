@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotionService } from "../../services/notion.service";
 import { Project } from "../../models/project";
+import { ProjectColorsService } from "../../shared/project-colors.service";
+import { Color } from "../../models/color";
 
 @Component({
   selector: 'app-projects',
@@ -13,9 +15,11 @@ import { Project } from "../../models/project";
 export class ProjectsComponent {
 
   public projects: Array<Project> = [];
+  public projectColors: Array<[Color, Color]>;
 
-  constructor(private notionService: NotionService) {
+  constructor(private notionService: NotionService, private projectColorsService: ProjectColorsService) {
     this.getProjects();
+    this.projectColors = projectColorsService.projectColors;
   }
 
   getProjects() {
@@ -65,5 +69,12 @@ export class ProjectsComponent {
     };
 
     return project;
+  }
+
+  setBackgroundGradient(colors: Color[]): string {
+    let rgba1: string = this.projectColorsService.formatColorToRGBA(colors[0]);
+    let rgba2: string = this.projectColorsService.formatColorToRGBA(colors[1]);
+
+    return `background: linear-gradient(180deg, ${rgba1} 0%, ${rgba2} 100%);`
   }
 }
