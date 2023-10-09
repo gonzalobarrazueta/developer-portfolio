@@ -10,12 +10,14 @@ import { Pages } from "../models/pages";
 export class NotionService {
 
   private readonly baseUrl: string;
+  private readonly notionEndpoint: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = environment.PROJECTS_URL;
+    this.baseUrl = environment.BASE_URL;
+    this.notionEndpoint = environment.NOTION_ENDPOINT;
   }
 
   getPages(): Observable<Pages> {
-    return this.http.get<Pages>(`${this.baseUrl}/projects`);
+    return this.http.get<Pages>(`${this.baseUrl}/${this.notionEndpoint}`);
   }
 }
