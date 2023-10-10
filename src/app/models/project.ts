@@ -1,6 +1,7 @@
 export interface Project {
+  pageId: string;
   title: string;
   description: string;
   technologies: Array<string>;
-  image: string;
+  imageUrl: string;
 }

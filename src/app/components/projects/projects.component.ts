@@ -62,10 +62,11 @@ export class ProjectsComponent {
     }
 
     let project: Project = {
+      pageId: page.id,
       title,
       description,
       technologies,
-      image: page.properties.image.url
+      imageUrl: page.properties.image.url
     };
 
     return project;
