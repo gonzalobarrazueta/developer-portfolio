@@ -4,6 +4,7 @@ import { NotionService } from "../../services/notion.service";
 import { Project } from "../../models/project";
 import { ProjectColorsService } from "../../shared/project-colors.service";
 import { Color } from "../../models/color";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-projects',
@@ -17,7 +18,9 @@ export class ProjectsComponent {
   public projects: Array<Project> = [];
   public projectColors: Array<[Color, Color]>;
 
-  constructor(private notionService: NotionService, private projectColorsService: ProjectColorsService) {
+  constructor(private notionService: NotionService,
+              private projectColorsService: ProjectColorsService,
+              private router: Router) {
     this.getProjects();
     this.projectColors = projectColorsService.projectColors;
   }
@@ -77,5 +80,9 @@ export class ProjectsComponent {
     let rgba2: string = this.projectColorsService.formatColorToRGBA(colors[1]);
 
     return `background: linear-gradient(180deg, ${rgba1} 0%, ${rgba2} 100%);`
+  }
+
+  navigateToProjectDetails(project: Project) {
+    this.router.navigate(['project'], { queryParams: { project: JSON.stringify(project) } });
   }
 }
