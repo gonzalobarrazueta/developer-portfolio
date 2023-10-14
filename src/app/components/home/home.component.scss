@@ -53,6 +53,12 @@ main {
   gap: 20px;
 }
 
+.tech-logo {
+  font-size: 3rem;
+  color: #000000;
+  text-decoration: none;
+}
+
 button {
   background-color: #58CE3A;
   padding: 10px 15px;
@@ -101,5 +107,9 @@ button {
 
   .projects-btn {
     grid-column: 4 / 6;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
   }
 }
