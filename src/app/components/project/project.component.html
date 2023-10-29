@@ -1,0 +1,47 @@
+<div>
+  <div class="page-title">
+    <h1 class="title">{{project.title}}</h1>
+  </div>
+  <main class="containing-block">
+    <article class="project-container">
+      <div class="project-image">
+        <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
+      </div>
+
+      <div class="row">
+        <h2 class="subtitle">Sobre el proyecto ✍️</h2>
+        <div class="project-description">
+          <p>{{project.description}}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <h2 class="subtitle">Tecnologías 🧑‍💻</h2>
+        <ul class="project-technologies">
+          <li class="technology" *ngFor="let tech of project.technologies">
+            <div class="tech-logo">
+            </div>
+            <p>{{tech}}</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <h2 class="subtitle">Demo🏌️‍♂️</h2>
+        <div class="demo">
+          <iframe height="315" src="https://www.youtube.com/embed/eFpPRCmymuw?si=do0YsdPfBLE5HDTN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="cta-buttons">
+        <button class="cta-button white-button">
+          <p>Github</p>
+        </button>
+        <button class="cta-button red-button">
+          <p>Live</p>
+        </button>
+      </div>
+
+    </article>
+  </main>
+</div>
