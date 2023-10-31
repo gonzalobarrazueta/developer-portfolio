@@ -1,8 +1,8 @@
-<div>
+<div id="screen">
   <div class="page-title">
     <h1 class="title">{{project.title}}</h1>
   </div>
-  <main class="containing-block">
+  <main class="containing-block" *ngIf="!isDesktopScreen; else desktopView">
     <article class="project-container">
       <div class="project-image">
         <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
@@ -41,7 +41,11 @@
           <p>Live</p>
         </button>
       </div>
-
     </article>
   </main>
+
+  <ng-template #desktopView>
+    <main>
+    </main>
+  </ng-template>
 </div>
