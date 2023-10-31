@@ -6,7 +6,7 @@ import { Color } from "../models/color";
 })
 export class ProjectColorsService {
 
-  public projectColors: Array<[Color, Color]> = [
+  private projectColors: Array<[Color, Color]> = [
     [{
       rgb: { red: 162, green: 230, blue: 77 },
       opacity: 0.42
@@ -37,5 +37,18 @@ export class ProjectColorsService {
 
   formatColorToRGBA(color: Color): string {
     return `rgba(${color.rgb.red}, ${color.rgb.green}, ${color.rgb.blue}, ${color.opacity})`;
+  }
+
+  chooseRandomColors(): [Color, Color] {
+    let randomNumber = Math.random();
+    let colorIndex = Math.floor(randomNumber * (this.projectColors.length - 1));
+    return this.projectColors[colorIndex];
+  }
+
+  setGradientStyle(colors: [Color, Color]): string {
+    let rgba1: string = this.formatColorToRGBA(colors[0]);
+    let rgba2: string = this.formatColorToRGBA(colors[1]);
+
+    return `background: linear-gradient(180deg, ${rgba1} 0%, ${rgba2} 100%);`
   }
 }

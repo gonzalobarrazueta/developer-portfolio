@@ -16,13 +16,11 @@ import { Router } from "@angular/router";
 export class ProjectsComponent {
 
   public projects: Array<Project> = [];
-  public projectColors: Array<[Color, Color]>;
 
   constructor(private notionService: NotionService,
               private projectColorsService: ProjectColorsService,
               private router: Router) {
     this.getProjects();
-    this.projectColors = projectColorsService.projectColors;
   }
 
   getProjects() {
@@ -75,11 +73,9 @@ export class ProjectsComponent {
     return project;
   }
 
-  setBackgroundGradient(colors: Color[]): string {
-    let rgba1: string = this.projectColorsService.formatColorToRGBA(colors[0]);
-    let rgba2: string = this.projectColorsService.formatColorToRGBA(colors[1]);
-
-    return `background: linear-gradient(180deg, ${rgba1} 0%, ${rgba2} 100%);`
+  setGradientBackground(): string {
+    let colors = this.projectColorsService.chooseRandomColors();
+    return this.projectColorsService.setGradientStyle(colors);
   }
 
   navigateToProjectDetails(project: Project) {

@@ -4,7 +4,7 @@
   </div>
   <div class="projects-list">
     <article *ngFor="let project of projects; let i = index"
-             class="project-card" [style]="setBackgroundGradient(projectColors[i])"
+             class="project-card" [style]="setGradientBackground()"
              (click)="navigateToProjectDetails(project)">
       <div class="project-title">
         <h1>{{project.title}}</h1>
