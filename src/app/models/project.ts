@@ -4,4 +4,5 @@ export interface Project {
   description: string;
   technologies: Array<string>;
   imageUrl: string;
+  demo: string;
 }

@@ -67,7 +67,8 @@ export class ProjectsComponent {
       title,
       description,
       technologies,
-      imageUrl: page.properties.image.url
+      imageUrl: page.properties.image.url,
+      demo: page.properties.demo.url
     };
 
     return project;
