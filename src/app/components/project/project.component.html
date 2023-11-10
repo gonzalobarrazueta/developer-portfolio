@@ -1,8 +1,8 @@
-<div id="screen">
+<main id="screen">
   <div class="page-title">
-    <h1 class="title">{{project.title}}</h1>
+    <h1 class="title">{{project.title.toUpperCase()}}</h1>
   </div>
-  <main class="containing-block" *ngIf="!isDesktopScreen; else desktopView">
+  <div class="containing-block" *ngIf="!isDesktopScreen; else desktopView">
     <article class="project-container">
       <div class="project-image">
         <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
@@ -20,6 +20,7 @@
         <ul class="project-technologies">
           <li class="technology" *ngFor="let tech of project.technologies">
             <div class="tech-logo">
+              <i class="{{technologiesService.getTechnology(tech.toLowerCase())}}"></i>
             </div>
             <p>{{tech}}</p>
           </li>
@@ -29,7 +30,7 @@
       <div class="row">
         <h2 class="subtitle">Demo🏌️‍♂️</h2>
         <div class="demo">
-          <iframe height="315" src="https://www.youtube.com/embed/eFpPRCmymuw?si=do0YsdPfBLE5HDTN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe height="315" [src]="project.demo | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -42,10 +43,42 @@
         </button>
       </div>
     </article>
-  </main>
+  </div>
 
   <ng-template #desktopView>
-    <main>
-    </main>
+    <div class="desktop-container">
+      <div class="card">
+        <div class="card-img">
+          <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
+        </div>
+        <div class="card-info">
+          <div class="card-description">
+            <p>{{project.description}}</p>
+          </div>
+          <div class="cta-buttons">
+            <button class="cta-button white-button">Github</button>
+            <button class="cta-button red-button">Live</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <h2 class="subtitle">Tecnologías 🧑‍💻</h2>
+        <ul class="project-technologies">
+          <li class="technology" *ngFor="let tech of project.technologies">
+            <div class="tech-logo">
+              <i class="{{technologiesService.getTechnology(tech.toLowerCase())}}"></i>
+            </div>
+            <p>{{tech}}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <h2 class="subtitle">Demo🕹️</h2>
+        <div class="demo">
+          <iframe height="315" [src]="project.demo | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
   </ng-template>
-</div>
+</main>
