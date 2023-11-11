@@ -10,7 +10,7 @@ import { TechnologiesService } from "../../services/technologies.service";
   standalone: true,
   imports: [CommonModule, SafeUrlPipe],
   templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss']
+  styleUrls: ['./project.component.scss', './project-desktop.component.scss']
 })
 export class ProjectComponent implements OnInit {
 
@@ -38,8 +38,6 @@ export class ProjectComponent implements OnInit {
 
   checkScreenSize(): boolean {
     this.screenSize = document.getElementById("screen")?.offsetWidth;
-    if (this.screenSize && this.screenSize > 800) return true;
-
-    return false;
+    if (this.screenSize && this.screenSize > 800) return true; else return false;
   }
 }

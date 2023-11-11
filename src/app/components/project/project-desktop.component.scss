@@ -1,0 +1,83 @@
+@media (min-width: 801px) {
+  #screen {
+    padding: 1rem 0 1.5rem 0;
+  }
+
+  .desktop-container {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+  }
+
+  .card {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+    padding: 1rem 0;
+    border-radius: 10px;
+  }
+
+  .card-img {
+    flex-basis: 50%;
+    max-width: 350px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .card-info {
+    flex-basis: 50%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .row {
+    margin-top: 1.5rem;
+  }
+
+  .technology {
+    .tech-icon {
+      font-size: 4rem;
+    }
+
+    .tech-svg {
+      max-width: 70px;
+      max-height: 70px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .cta-buttons {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .demo {
+    width: 70%;
+    margin: 0 auto;
+
+    iframe {
+      border-radius: 10px;
+    }
+  }
+}
