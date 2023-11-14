@@ -40,11 +40,11 @@
       </div>
 
       <div class="cta-buttons">
-        <button class="cta-button white-button">
-          <p>Github</p>
+        <button *ngIf="project.github" class="cta-button white-button">
+          <a [href]="project.github" target="_blank">Github</a>
         </button>
-        <button class="cta-button red-button">
-          <p>Live</p>
+        <button *ngIf="project.live" class="cta-button red-button">
+          <a [href]="project.live" target="_blank">Live</a>
         </button>
       </div>
     </article>
@@ -61,8 +61,12 @@
             <p>{{project.description}}</p>
           </div>
           <div class="cta-buttons">
-            <button class="cta-button white-button">Github</button>
-            <button class="cta-button red-button">Live</button>
+            <button *ngIf="project.github" class="cta-button white-button">
+              <a [href]="project.github" target="_blank">Github</a>
+            </button>
+            <button *ngIf="project.live" class="cta-button red-button">
+              <a [href]="project.live" target="_blank">Live</a>
+            </button>
           </div>
         </div>
       </div>
