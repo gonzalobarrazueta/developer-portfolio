@@ -1,9 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from "../../models/project";
-import { ActivatedRoute, Params } from "@angular/router";
 import { SafeUrlPipe } from "../../shared/pipes/safe-url.pipe";
 import { TechnologiesService } from "../../services/technologies.service";
+import { ProjectsService } from "../../services/projects.service";
 
 @Component({
   selector: 'app-project',
@@ -18,17 +18,14 @@ export class ProjectComponent implements OnInit {
   isDesktopScreen: boolean;
   screenSize: number | undefined;
 
-  constructor(private route: ActivatedRoute, public technologiesService: TechnologiesService,) {
+  constructor(private projectsService: ProjectsService,
+              public technologiesService: TechnologiesService) {
     this.project = {} as Project;
     this.isDesktopScreen = true;
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(
-      (params: Params) => {
-        if (params['project']) this.project = JSON.parse(params['project']);
-      }
-    )
+    this.project = this.projectsService.currentProject();
   }
 
   @HostListener('window:resize', ['$event'])

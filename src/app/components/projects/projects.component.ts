@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NotionService } from "../../services/notion.service";
 import { Project } from "../../models/project";
 import { ProjectColorsService } from "../../shared/project-colors.service";
-import { Color } from "../../models/color";
 import { Router } from "@angular/router";
+import { ProjectsService } from "../../services/projects.service";
 
 @Component({
   selector: 'app-projects',
@@ -17,8 +17,9 @@ export class ProjectsComponent {
 
   public projects: Array<Project> = [];
 
-  constructor(private notionService: NotionService,
-              private projectColorsService: ProjectColorsService,
+  constructor(private projectColorsService: ProjectColorsService,
+              private projectsService: ProjectsService,
+              private notionService: NotionService,
               private router: Router) {
     this.getProjects();
   }
@@ -82,6 +83,7 @@ export class ProjectsComponent {
   }
 
   navigateToProjectDetails(project: Project) {
-    this.router.navigate(['project'], { queryParams: { project: JSON.stringify(project) } });
+    this.projectsService.currentProject.set(project);
+    this.router.navigate(['project']);
   }
 }
