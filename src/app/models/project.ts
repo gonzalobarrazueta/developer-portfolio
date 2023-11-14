@@ -5,4 +5,6 @@ export interface Project {
   technologies: Array<string>;
   imageUrl: string;
   demo: string;
+  github: string;
+  live: string;
 }
