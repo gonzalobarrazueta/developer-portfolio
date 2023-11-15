@@ -5,6 +5,8 @@ import { Project } from "../../models/project";
 import { ProjectColorsService } from "../../shared/project-colors.service";
 import { Router } from "@angular/router";
 import { ProjectsService } from "../../services/projects.service";
+import { Color } from "../../models/color";
+import { ProjectAndColors } from "../../models/project-and-colors";
 
 @Component({
   selector: 'app-projects',
@@ -15,7 +17,7 @@ import { ProjectsService } from "../../services/projects.service";
 })
 export class ProjectsComponent {
 
-  public projects: Array<Project> = [];
+  projectAndColors: Array<ProjectAndColors> = [];
 
   constructor(private projectColorsService: ProjectColorsService,
               private projectsService: ProjectsService,
@@ -27,22 +29,20 @@ export class ProjectsComponent {
   getProjects() {
     this.notionService.getPages()
       .subscribe(data => {
-        this.projects = this.buildProjectsArray(data.results);
+        this.buildProjectAndColorsArray(data.results);
       });
   }
 
-  buildProjectsArray(results: Array<any>): Array<Project> {
-
-    let projectsArray: Array<Project> = [];
+  private buildProjectAndColorsArray(results: Array<any>) {
     for (let i = 0; i < results.length; i++) {
-      projectsArray.push(this.pageToProject(results[i]));
+      this.projectAndColors.push({
+        project: this.pageToProject(results[i]),
+        colors: this.projectColorsService.chooseRandomColors()
+      });
     }
-
-    return projectsArray;
   }
 
   pageToProject(page: any): Project {
-
     let pageTitle = page.properties.name.title;
     let title: string = "";
     if (pageTitle.length > 0) {
@@ -77,13 +77,13 @@ export class ProjectsComponent {
     return project;
   }
 
-  setGradientBackground(): string {
-    let colors = this.projectColorsService.chooseRandomColors();
+  setGradientBackground(colors: [Color, Color]): string {
     return this.projectColorsService.setGradientStyle(colors);
   }
 
-  navigateToProjectDetails(project: Project) {
-    this.projectsService.currentProject.set(project);
+  navigateToProjectDetails(p: ProjectAndColors) {
+    this.projectsService.currentProject.set(p.project);
+    this.projectsService.currentProjectColors.next(p.colors);
     this.router.navigate(['project']);
   }
 }

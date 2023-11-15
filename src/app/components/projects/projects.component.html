@@ -3,20 +3,20 @@
     <h1>Proyectos</h1>
   </div>
   <div class="projects-list">
-    <article *ngFor="let project of projects; let i = index"
-             class="project-card" [style]="setGradientBackground()"
-             (click)="navigateToProjectDetails(project)">
+    <article *ngFor="let p of projectAndColors"
+             class="project-card" [style]="setGradientBackground(p.colors)"
+             (click)="navigateToProjectDetails(p)">
       <div class="project-title">
-        <h1>{{project.title}}</h1>
+        <h1>{{p.project.title}}</h1>
       </div>
       <div class="project-description">
-        <p>{{project.description}}</p>
+        <p>{{p.project.description}}</p>
       </div>
       <div class="project-image">
         <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
       </div>
       <ul class="project-technologies">
-        <li *ngFor="let tech of project.technologies">{{tech}}</li>
+        <li *ngFor="let tech of p.project.technologies">{{tech}}</li>
       </ul>
       <div class="project-button">
         <button>Ver proyecto</button>
