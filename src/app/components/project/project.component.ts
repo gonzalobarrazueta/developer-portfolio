@@ -4,6 +4,7 @@ import { Project } from "../../models/project";
 import { SafeUrlPipe } from "../../shared/pipes/safe-url.pipe";
 import { TechnologiesService } from "../../services/technologies.service";
 import { ProjectsService } from "../../services/projects.service";
+import { ProjectColorsService } from "../../shared/project-colors.service";
 
 @Component({
   selector: 'app-project',
@@ -15,17 +16,23 @@ import { ProjectsService } from "../../services/projects.service";
 export class ProjectComponent implements OnInit {
 
   project: Project;
+  gradient: string;
   isDesktopScreen: boolean;
   screenSize: number | undefined;
 
-  constructor(private projectsService: ProjectsService,
+  constructor(private colors: ProjectColorsService,
+              private projectsService: ProjectsService,
               public technologiesService: TechnologiesService) {
     this.project = {} as Project;
+    this.gradient = "";
     this.isDesktopScreen = true;
   }
 
   ngOnInit(): void {
     this.project = this.projectsService.currentProject();
+    this.projectsService.currentProjectColors.subscribe(colors => {
+      this.gradient = this.colors.setGradientStyle(colors);
+    })
   }
 
   @HostListener('window:resize', ['$event'])

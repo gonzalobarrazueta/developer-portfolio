@@ -3,7 +3,7 @@
     <h1 class="title">{{project.title}}</h1>
   </div>
   <div class="containing-block" *ngIf="!isDesktopScreen; else desktopView">
-    <article class="project-container">
+    <article class="project-container" [style]="gradient">
       <div class="project-image">
         <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
       </div>
@@ -52,7 +52,7 @@
 
   <ng-template #desktopView>
     <div class="desktop-container">
-      <div class="card">
+      <div class="card" [style]="gradient">
         <div class="card-img">
           <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
         </div>
