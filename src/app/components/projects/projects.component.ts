@@ -68,7 +68,7 @@ export class ProjectsComponent {
       title,
       description,
       technologies,
-      imageUrl: page.properties.image.url,
+      imageUrl: page.properties.image.files[0].file.url,
       demo: page.properties.demo.url,
       github: page.properties.github.url,
       live: page.properties.live.url

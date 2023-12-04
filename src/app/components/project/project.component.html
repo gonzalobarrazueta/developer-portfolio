@@ -5,7 +5,7 @@
   <div class="containing-block" *ngIf="!isDesktopScreen; else desktopView">
     <article class="project-container" [style]="gradient">
       <div class="project-image">
-        <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
+        <img src="{{project.imageUrl}}" alt="Photo of a laptop">
       </div>
 
       <div class="row">
@@ -54,7 +54,7 @@
     <div class="desktop-container">
       <div class="card" [style]="gradient">
         <div class="card-img">
-          <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
+          <img src="{{project.imageUrl}}" alt="Photo of a laptop">
         </div>
         <div class="card-info">
           <div class="card-description">

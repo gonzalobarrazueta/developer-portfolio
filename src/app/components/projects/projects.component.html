@@ -13,7 +13,7 @@
         <p>{{p.project.description}}</p>
       </div>
       <div class="project-image">
-        <img src="../../../assets/images/projects/laptop.png" alt="Photo of a laptop">
+        <img src="{{p.project.imageUrl}}" alt="Photo of a laptop">
       </div>
       <ul class="project-technologies">
         <li *ngFor="let tech of p.project.technologies">{{tech}}</li>
