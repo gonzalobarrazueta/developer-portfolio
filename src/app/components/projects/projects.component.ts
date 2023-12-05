@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotionService } from "../../services/notion.service";
 import { Project } from "../../models/project";
@@ -96,5 +96,11 @@ export class ProjectsComponent {
     this.projectsService.currentProject.set(p.project);
     this.projectsService.currentProjectColors.next(p.colors);
     this.router.navigate(['project']);
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeUnloadHandler(event: any) {
+    // Clear local storage when the browser is closed
+    localStorage.removeItem('projects');
   }
 }
