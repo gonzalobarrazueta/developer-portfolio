@@ -27,10 +27,21 @@ export class ProjectsComponent {
   }
 
   getProjects() {
-    this.notionService.getPages()
-      .subscribe(data => {
-        this.buildProjectAndColorsArray(data.results);
-      });
+    let projects: string | null = localStorage.getItem('projects');
+
+    if (projects) {
+      this.projectAndColors = JSON.parse(projects);
+    } else {
+      this.notionService.getPages()
+        .subscribe(data => {
+          this.buildProjectAndColorsArray(data.results);
+          this.setLocalStorageProjects();
+        });
+    }
+  }
+
+  setLocalStorageProjects() {
+    localStorage.setItem("projects", JSON.stringify(this.projectAndColors));
   }
 
   private buildProjectAndColorsArray(results: Array<any>) {
