@@ -19,12 +19,12 @@
         <h2 class="subtitle">Tecnologías 🧑‍💻</h2>
         <ul class="project-technologies">
           <li class="technology" *ngFor="let tech of project.technologies">
-            <div class="tech-icon" *ngIf="technologiesService.isIconOrSvg(tech.toLowerCase()); else svg">
-              <i class="{{technologiesService.getTechnology('icon', tech.toLowerCase())}}"></i>
+            <div class="tech-icon" *ngIf="technologiesService.isIconOrSvg(tech.name.toLowerCase()); else svg">
+              <i class="{{technologiesService.getTechnology('icon', tech.name.toLowerCase())}}"></i>
             </div>
             <ng-template #svg>
               <div class="tech-svg">
-                <img src="{{technologiesService.getTechnology('svg', tech.toLowerCase())}}" alt="">
+                <img src="{{technologiesService.getTechnology('svg', tech.name.toLowerCase())}}" alt="">
               </div>
             </ng-template>
             <p>{{tech}}</p>
@@ -75,15 +75,15 @@
         <h2 class="subtitle">Tecnologías 🧑‍💻</h2>
         <ul class="project-technologies">
           <li class="technology" *ngFor="let tech of project.technologies">
-            <div class="tech-icon" *ngIf="technologiesService.isIconOrSvg(tech.toLowerCase()); else svg">
-              <i class="{{technologiesService.getTechnology('icon', tech.toLowerCase())}}"></i>
+            <div class="tech-icon" *ngIf="technologiesService.isIconOrSvg(tech.name.toLowerCase()); else svg">
+              <i class="{{technologiesService.getTechnology('icon', tech.name.toLowerCase())}}"></i>
             </div>
             <ng-template #svg>
               <div class="tech-svg">
-                <img src="{{technologiesService.getTechnology('svg', tech.toLowerCase())}}" alt="">
+                <img src="{{technologiesService.getTechnology('svg', tech.name.toLowerCase())}}" alt="">
               </div>
             </ng-template>
-            <p>{{tech}}</p>
+            <p>{{tech.name}}</p>
           </li>
         </ul>
       </div>
