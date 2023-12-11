@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+﻿import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotionService } from "../../services/notion.service";
 import { Project } from "../../models/project";
@@ -7,6 +7,8 @@ import { Router } from "@angular/router";
 import { ProjectsService } from "../../services/projects.service";
 import { Color } from "../../models/color";
 import { ProjectAndColors } from "../../models/project-and-colors";
+import { Technology } from "../../models/technology";
+import { concat, Observable } from "rxjs";
 
 @Component({
   selector: 'app-projects',
@@ -35,16 +37,28 @@ export class ProjectsComponent {
       this.notionService.getPages()
         .subscribe(data => {
           this.buildProjectAndColorsArray(data.results);
+          this.saveProjects();
           this.setLocalStorageProjects();
         });
     }
+  }
+
+  saveProjects() {
+    let projectObservables: Array<Observable<Project>> =
+      this.projectAndColors.map(p => this.projectsService.saveProject(p.project));
+
+    concat(...projectObservables)
+      .subscribe({
+        next: () => console.log('Project saved'),
+        complete: () => console.log('All projects saved')
+      });
   }
 
   setLocalStorageProjects() {
     localStorage.setItem("projects", JSON.stringify(this.projectAndColors));
   }
 
-  private buildProjectAndColorsArray(results: Array<any>) {
+  buildProjectAndColorsArray(results: Array<any>) {
     for (let i = 0; i < results.length; i++) {
       this.projectAndColors.push({
         project: this.pageToProject(results[i]),
@@ -67,10 +81,10 @@ export class ProjectsComponent {
     }
 
     let pageTechnologies = page.properties.technologies.multi_select;
-    let technologies: Array<string> = [];
+    let technologies: Array<Technology> = [];
     if (pageTechnologies.length > 0) {
       for (const tech of pageTechnologies) {
-        technologies.push(tech.name);
+        technologies.push({ name: tech.name });
       }
     }
 
