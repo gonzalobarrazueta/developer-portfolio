@@ -10,6 +10,4 @@ import { RouterLink } from "@angular/router";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  snsLogoWidth: number = 40;
-  pfpWidth: number = 150;
 }
