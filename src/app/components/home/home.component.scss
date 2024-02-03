@@ -2,30 +2,38 @@
   box-sizing: border-box;
 }
 
-.page {
-  width: 100%;
-  height: 100vh;
-  padding: 20% 10%;
-  background-color: #FFFAE5;
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
+:host {
   display: flex;
-  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  overflow: auto;
 }
 
 main {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: right;
+  gap: 20px;
+  width: 85%;
+}
+
+.row {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
   gap: 20px;
 }
 
 .pfp-container {
   width: 50%;
   max-width: 180px;
-  border: 2px solid #000;
-  border-radius: 15px;
+  border: 2px solid #000000;
+  border-radius: 50%;
 
   overflow: hidden;
   display: flex;
@@ -36,36 +44,54 @@ main {
   }
 }
 
-.greeting {
-  h1 {
-    font-size: 32px;
+.presentation {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 10px;
 
-    span {
-      display: block;
-      font-size: 20px;
-    }
+  p {
+    font-weight: 500;
+  }
+
+  .gradient-text {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+
+    background-image: linear-gradient(90deg, #08203e, #557c93);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: #000000;
   }
 }
 
 .social-media {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   gap: 20px;
+
+  width: 50%;
+  max-width: 250px;
+
+  .tech-logo {
+    font-size: 2.3rem;
+    color: #000000;
+    text-decoration: none;
+  }
 }
 
-.tech-logo {
-  font-size: 3rem;
-  color: #000000;
-  text-decoration: none;
-}
-
-button {
+.projects-btn button {
   background-color: #58CE3A;
   padding: 10px 15px;
   border: 0;
   border-radius: 5px;
   max-width: 200px;
 
+  font-size: .8rem;
   font-weight: 600;
   color: #ffffff;
 
@@ -73,43 +99,47 @@ button {
   cursor: pointer;
 }
 
-@media (min-width: 600px) {
-  main {
-    max-width: 700px;
-    display: grid;
-    grid-template-rows: repeat(3, auto);
-    grid-template-columns: repeat(5, 1fr);
+@media (min-width: 1000px) {
+
+  .row {
+    flex-flow: row nowrap;
+    align-items: center;
   }
 
   .pfp-container {
-    grid-column: 1 / 3;
-    grid-row: 1 / 4;
-
-    width: 100%;
-    margin-right: 20px;
-
-    justify-self: end;
+    width: 50%;
+    max-width: 250px;
+    border-radius: 15px;
   }
 
-  .greeting {
-    grid-column: 3 / 6;
-    padding-top: 20px;
+  .presentation {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
 
-    h1 {
-      white-space: nowrap;
-      font-weight: bolder;
+    p {
+      font-size: 1.25rem;
+      font-weight: 500;
+
+      .gradient-text {
+        font-size: 2.5rem;
+      }
     }
   }
 
-  .social-media {
-    grid-column: 3 / 4;
+  .row:nth-child(2) {
+    justify-content: start;
   }
 
-  .projects-btn {
-    grid-column: 4 / 6;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: flex-start;
+  .social-media {
+    .tech-logo {
+      font-size: 3rem;
+    }
+  }
+
+  .projects-btn button {
+    border-radius: 3px;
+    max-width: 200px;
+    font-size: 1rem;
   }
 }
