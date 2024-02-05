@@ -19,7 +19,7 @@ main {
   display: flex;
   flex-flow: column nowrap;
   gap: 20px;
-  width: 85%;
+  width: 90%;
 }
 
 .row {
@@ -141,5 +141,11 @@ main {
     border-radius: 3px;
     max-width: 200px;
     font-size: 1rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  main {
+    width: 70%;
   }
 }
