@@ -2,7 +2,7 @@
   <div class="page-title">
     <h1 class="title">{{project.title}}</h1>
   </div>
-  <div class="containing-block" *ngIf="!isDesktopScreen; else desktopView">
+  <div class="containing-block" *ngIf="isMobileScreen; else desktopView">
     <article class="project-container" [style]="gradient">
       <div class="project-image">
         <img src="{{project.imageUrl}}" alt="Photo of a laptop">

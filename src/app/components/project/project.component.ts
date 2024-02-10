@@ -17,31 +17,23 @@ export class ProjectComponent implements OnInit {
 
   project: Project;
   gradient: string;
-  isDesktopScreen: boolean;
-  screenSize: number | undefined;
+  isMobileScreen: boolean;
 
   constructor(private colors: ProjectColorsService,
               private projectsService: ProjectsService,
               public technologiesService: TechnologiesService) {
     this.project = {} as Project;
     this.gradient = "";
-    this.isDesktopScreen = true;
+    this.isMobileScreen = window.innerWidth <= 800;
   }
 
   ngOnInit(): void {
-    this.project = this.projectsService.currentProject();
-    this.projectsService.currentProjectColors.subscribe(colors => {
-      this.gradient = this.colors.setGradientStyle(colors);
-    })
+    this.projectsService.currentProject$.subscribe(project => this.project = project);
+    this.projectsService.currentProjectColors.subscribe(colors => this.gradient = this.colors.setGradientStyle(colors));
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
-    this.isDesktopScreen = this.checkScreenSize();
-  }
-
-  checkScreenSize(): boolean {
-    this.screenSize = document.getElementById("screen")?.offsetWidth;
-    if (this.screenSize && this.screenSize > 800) return true; else return false;
+    if (window.innerWidth <= 800) this.isMobileScreen = true; else this.isMobileScreen = false;
   }
 }
