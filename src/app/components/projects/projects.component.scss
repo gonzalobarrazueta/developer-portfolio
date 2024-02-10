@@ -6,7 +6,7 @@
   display: flex;
   flex-flow: column nowrap;
   gap: 15px;
-  padding: 20px 0;
+  padding: var(--navbar-spacing) 0;
 }
 
 .page-title {
@@ -32,7 +32,6 @@
   width: 90%;
   max-width: 450px;
   padding: 25px 20px;
-
   border-radius: 10px;
 
   cursor: pointer;
@@ -99,8 +98,14 @@
 }
 
 @media (min-width: 800px) {
+
+  .projects-page {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
   .page-title {
-    padding-left: 5%;
+    padding-left: 0;
   }
 
   .project-card {
@@ -108,7 +113,8 @@
     grid-template-columns: repeat(2, auto);
     grid-auto-rows: min-content;
 
-    max-width: 800px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .project-description {
