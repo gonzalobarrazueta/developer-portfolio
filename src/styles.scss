@@ -13,4 +13,5 @@ body {
 :root {
   --navbar-desktop: 50px;
   --navbar-mobile: 60px;
+  --navbar-spacing: calc(var(--navbar-desktop) + 15px);
 }
