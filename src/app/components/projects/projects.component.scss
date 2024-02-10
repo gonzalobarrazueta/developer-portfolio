@@ -80,23 +80,6 @@
   }
 }
 
-.project-button {
-  margin: 0 auto;
-
-  button {
-    border: 0;
-    border-radius: 5px;
-
-    background-color: #373737;
-    padding: 10px 20px;
-
-    font-size: 14px;
-    color: #FFFFFF;
-
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  }
-}
-
 @media (min-width: 800px) {
 
   .projects-page {
@@ -139,9 +122,5 @@
   .project-technologies {
     grid-column: 1;
     align-self: center;
-  }
-
-  .project-button {
-    display: none;
   }
 }
