@@ -37,7 +37,6 @@ export class ProjectsComponent {
       this.notionService.getPages()
         .subscribe(data => {
           this.buildProjectAndColorsArray(data.results);
-          this.saveProjects();
           this.setLocalStorageProjects();
         });
     }
@@ -61,45 +60,10 @@ export class ProjectsComponent {
   buildProjectAndColorsArray(results: Array<any>) {
     for (let i = 0; i < results.length; i++) {
       this.projectAndColors.push({
-        project: this.pageToProject(results[i]),
+        project: this.projectsService.pageToProject(results[i]),
         colors: this.projectColorsService.chooseRandomColors()
       });
     }
-  }
-
-  pageToProject(page: any): Project {
-    let pageTitle = page.properties.name.title;
-    let title: string = "";
-    if (pageTitle.length > 0) {
-      title = page.properties.name.title[0].text.content;
-    }
-
-    let pageDescription = page.properties.description.rich_text;
-    let description = "";
-    if (pageDescription.length > 0) {
-      description = page.properties.description.rich_text[0].text.content;
-    }
-
-    let pageTechnologies = page.properties.technologies.multi_select;
-    let technologies: Array<Technology> = [];
-    if (pageTechnologies.length > 0) {
-      for (const tech of pageTechnologies) {
-        technologies.push({ name: tech.name });
-      }
-    }
-
-    let project: Project = {
-      pageId: page.id,
-      title,
-      description,
-      technologies,
-      imageUrl: page.properties.image.files[0].file.url,
-      demo: page.properties.demo.url,
-      github: page.properties.github.url,
-      live: page.properties.live.url
-    };
-
-    return project;
   }
 
   setGradientBackground(colors: [Color, Color]): string {
@@ -107,7 +71,7 @@ export class ProjectsComponent {
   }
 
   navigateToProjectDetails(p: ProjectAndColors) {
-    this.projectsService.currentProject.set(p.project);
+    this.projectsService.setCurrentProject(p.project);
     this.projectsService.currentProjectColors.next(p.colors);
     this.router.navigate(['project']);
   }
