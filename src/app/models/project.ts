@@ -4,7 +4,7 @@ export interface Project {
   pageId: string;
   title: string;
   description: string;
-  technologies: Array<Technology>;
+  technologies: Array<String>;
   imageUrl: string;
   demo: string;
   github: string;
