@@ -1,10 +1,14 @@
-<header>
+<header [class.navbar-scrolled]="isScrolled">
   <nav>
-    <a routerLink="/home" class="logo">Gonzalo Barrazueta</a>
+    <a routerLink="/home" class="logo" *ngIf="!isScrolled">Gonzalo Barrazueta</a>
     <button class="nav-toggle" (click)="toggleNavMenu()" aria-label="Toggle menu">
       <fa-icon [icon]="faBars"></fa-icon>
     </button>
+
     <ul class="nav-menu">
+      <li class="scrolled-pfp" *ngIf="isScrolled">
+        <img src="assets/images/pfp.jpg">
+      </li>
       <li class="nav-menu-item"><a routerLink="/home" class="nav-menu-link">Inicio</a></li>
       <li class="nav-menu-item"><a routerLink="/projects" class="nav-menu-link">Proyectos</a></li>
       <li class="nav-menu-item"><a href="#" class="nav-menu-link red-btn">Contacto</a></li>

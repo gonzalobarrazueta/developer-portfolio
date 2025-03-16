@@ -13,6 +13,8 @@ header {
   z-index: 1;
   top: 0;
   left: 0;
+
+  transition: all 0.1s ease-in-out;
 }
 
 nav {
@@ -113,5 +115,46 @@ a {
 
   .nav-menu-item {
     line-height: 0;
+  }
+
+  .navbar-scrolled {
+    top: 0;
+    height: 80px;
+    padding: 20px 0;
+    background: none;
+
+    nav {
+      width: 40%;
+      border-radius: 25px;
+      padding: 5px 10px;
+      background: rgba(255, 253, 242, 0.9);
+      backdrop-filter: blur(2px);
+    }
+
+    .logo, .nav-menu {
+      font-size: 12px;
+    }
+
+    .nav-menu {
+      justify-content: center;
+      padding: 0;
+    }
+
+    .red-btn {
+      border-radius: 30px;
+    }
+
+    .scrolled-pfp {
+      width: 35px;
+      //height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }
