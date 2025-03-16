@@ -1,10 +1,11 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from "../../models/project";
 import { SafeUrlPipe } from "../../shared/pipes/safe-url.pipe";
 import { TechnologiesService } from "../../services/technologies.service";
 import { ProjectsService } from "../../services/projects.service";
 import { ProjectColorsService } from "../../shared/project-colors.service";
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-project',
@@ -21,19 +22,18 @@ export class ProjectComponent implements OnInit {
 
   constructor(private colors: ProjectColorsService,
               private projectsService: ProjectsService,
-              public technologiesService: TechnologiesService) {
+              public technologiesService: TechnologiesService,
+              private breakpointObserver: BreakpointObserver) {
     this.project = {} as Project;
     this.gradient = "";
-    this.isMobileScreen = window.innerWidth <= 800;
+    this.isMobileScreen = window.innerWidth < 801;
   }
 
   ngOnInit(): void {
     this.projectsService.currentProject$.subscribe(project => this.project = project);
     this.projectsService.currentProjectColors.subscribe(colors => this.gradient = this.colors.setGradientStyle(colors));
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event): void {
-    if (window.innerWidth <= 800) this.isMobileScreen = true; else this.isMobileScreen = false;
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.Handset]).subscribe(result => {
+        this.isMobileScreen = result.matches;
+    });
   }
 }
